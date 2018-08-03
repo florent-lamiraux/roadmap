@@ -1,0 +1,57 @@
+format 219
+
+classcanvas 128113 class_ref 128113 // constraints::solver::BySubstitution
+  classdiagramsettings member_max_width 0 end
+  xyz 249 121 2000
+end
+classcanvas 128241 class_ref 128241 // constraints::Implicit
+  classdiagramsettings member_max_width 0 end
+  xyzwh 545 137 2000 167 89
+end
+classcanvas 128497 class_ref 128497 // constraints::LockedJoint
+  classdiagramsettings member_max_width 0 end
+  xyz 524 363 2000
+end
+classcanvas 128625 class_ref 135025 // constraints::solver:HierarchicalIterative
+  classdiagramsettings member_max_width 0 end
+  xyz 274 16 2000
+end
+classcanvas 128753 class_ref 128369 // constraints::Explicit
+  classdiagramsettings member_max_width 0 end
+  xyzwh 542 272 2000 175 47
+end
+classcanvas 130033 class_ref 141553 // constraints::ExplicitConstraintSet
+  classdiagramsettings member_max_width 0 end
+  xyz 109 235 2000
+end
+relationcanvas 128881 relation_ref 134641 // <generalisation>
+  from ref 128113 z 2001 to ref 128625
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129009 relation_ref 134769 // <generalisation>
+  from ref 128753 z 2001 to ref 128241
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129137 relation_ref 134897 // <generalisation>
+  from ref 128497 z 2001 to ref 128753
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129905 relation_ref 135665 // <composition>
+  from ref 128241 z 2001 to ref 128625
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 130161 relation_ref 142193 // <composition>
+  from ref 130033 z 2001 to ref 128113
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 130289 relation_ref 142321 // <composition>
+  from ref 130033 z 2001 to ref 128753
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+end

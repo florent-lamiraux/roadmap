@@ -1,0 +1,13 @@
+window_sizes 1800 924 450 1344 767 104
+cleanlooks_style
+diagrams
+  active  classdiagram_ref 128113 // constraints
+    1075 613 100 A4 0 0
+end
+show_stereotypes
+selected operation_ref 128241 // isSatisfied
+open
+  classdiagram_ref 128113 // constraints
+  class_ref 128241 // constraints::Implicit
+end
+end

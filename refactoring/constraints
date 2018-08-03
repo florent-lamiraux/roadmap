@@ -1,0 +1,59 @@
+ConfigProjector
+
+  - method optimize () used only in
+    hpp-core/src/path-optimization/partial-shortcut.cc:175
+
+  - does it make sense to handle at the same time
+    - implicit and explicit constraints, and
+    - priority levels ?
+
+Roadmap:
+
+  1. class renaming and moving
+
+    core::NumericalConstraints -> constraints::Implicit
+    core::Equation -> constraint::explicit
+    core::ExplicitNumericalConstraints -> constraint::explicit
+    core::LockedJoint -> constraints::LockedJoint
+
+  2. ConfigProjector::add are moved to class BySubstitution
+
+    - HierarchicalIterative::add take same prototypes as ConfigProjector::add.
+    - members functions_ and lockedJoints_ are moved to BySubstitution,
+    
+  3. class HierarchicalIterative takes a LiegroupSpacePtr_t as input,
+
+    - no need anymore to specify Integration_t.
+
+  4. ExplicitConstraintSet refactoring
+
+    4.1. Renaming
+    - argSize -> nq,
+    - derSize -> nv,
+    - freeArgs -> notOutArgs,
+    - freeDers -> notOutDers_,
+    - viewJacobian -> JacobianNotOutToOut
+      - hpp-core/src/path-optimization/spline-gradient-based.cc:135,
+    4.2 modify computation of error to make it computable by
+        constraints::Implicit:
+        error = q (q_{out}) - (f(q_{in}) + rhs) becomes
+        error = (q (q_{out}) - f(q_{in})) - rhs,
+    4.2 export computation of error and isSatisfied to constraints::Implicit,
+    4.3 Replace local class Function by Explicit
+
+
+Notes:
+
+  1. in copy constructor of Equation, rhsSize_ was not copied.
+  2. ConfigProjector::computeValueAndJacobian used only in
+    - a) ProblemSolver::computeValueAndJacobian,
+    - b) src/path-optimization/collision-constraints-result.hh,
+    - c) src/path-optimization/gradient-based, and b) is included only by c).
+  3. class MatrixBlocksBase should be documented.
+
+Questions:
+
+     1. ExplicitConstraintSet::isSatisfied:
+     error = g (q_out) - (f(q_in) + rhs), pourquoi pas
+     error = (g (q_out) - f(q_in)) - rhs ?
+     cela permettrait d'être compatible avec les contraintes implicites.
