@@ -41,6 +41,11 @@ Roadmap:
     4.2 export computation of error and isSatisfied to constraints::Implicit,
     4.3 Replace local class Function by Explicit
 
+  5. Errors of explicit relative transformations should be computed the
+     same way whether they are explicit (6D mask) or they are implicit
+     (some mask to false).
+       - this implies to make ExplicitRelativeTransform derive from
+         constraints::Explicit and to re-implement error computation
 
 Notes:
 
