@@ -38,6 +38,9 @@ Roadmap:
         constraints::Implicit:
         error = q (q_{out}) - (f(q_{in}) + rhs) becomes
         error = (q (q_{out}) - f(q_{in})) - rhs,
+        !!! Both formulations yield a different error computation in transitions
+            and states when mask is not full. This difference results in
+            inconsistencies.
     4.2 export computation of error and isSatisfied to constraints::Implicit,
     4.3 Replace local class Function by Explicit
 
@@ -45,7 +48,9 @@ Roadmap:
      same way whether they are explicit (6D mask) or they are implicit
      (some mask to false).
        - this implies to make ExplicitRelativeTransform derive from
-         constraints::Explicit and to re-implement error computation
+         constraints::Explicit and to re-implement error computation,
+       - this should make function g useless,
+       - Implement isSatis
 
 Notes:
 
