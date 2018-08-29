@@ -1,13 +1,15 @@
-window_sizes 1800 924 450 1344 767 104
+window_sizes 1800 924 338 1456 767 104
 cleanlooks_style
 diagrams
   active  classdiagram_ref 128113 // constraints
-    1075 613 100 A4 0 0
+    1435 742 120 A4 0 0
 end
 show_stereotypes
-selected operation_ref 128241 // isSatisfied
 open
+  class_ref 128369 // constraints::Explicit
   classdiagram_ref 128113 // constraints
   class_ref 128241 // constraints::Implicit
+  class_ref 141553 // constraints::ExplicitConstraintSet
+  class_ref 148081 // constraints::explicit::RelativePose
 end
 end

@@ -1,6 +1,6 @@
-format 219
+format 220
 "constraints"
-  revision 5
+  revision 7
   modified_by 113 "florent"
   cpp_root_dir "/home/florent/devel/hpp/bouml/constraints/C++/"
 
@@ -90,6 +90,37 @@ ${inlines}
 
       classrelation 143217 // <composition>
 	relation_ref 142321 // <composition>
+      end
+
+      operation 135281 "isSatisfied"
+	public explicit_return_type "bool"
+	nparams 1
+	  param in name "config" explicit_type "ConfigurationIn_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}const ${t0} & ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}const ${t0} & ${p0}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 135409 "isSatisfied"
+	public explicit_return_type "bool"
+	nparams 2
+	  param in name "config" explicit_type "ConfigurationIn_t"
+	  param out name "error" explicit_type "vector_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}const ${t0} & ${p0}${v0}, ${t1} & ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}const ${t0} & ${p0}, ${t1} & ${p1}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
       end
     end
 
@@ -337,6 +368,180 @@ ${inlines}
 	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
 "
 	    classrelation_ref 143217 // <composition>
+      end
+
+      operation 135025 "isSatisfied"
+	public explicit_return_type "bool"
+	nparams 1
+	  param in name "config" explicit_type "ConfigurationIn_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}const ${t0} & ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}const ${t0} & ${p0}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 135153 "isSatisfied"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "config" explicit_type "ConfigurationIn_t"
+	  param out name "error" explicit_type "vectorOut_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}const ${t0} & ${p0}${v0}, ${t1} & ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}const ${t0} & ${p0}, ${t1} & ${p1}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+    end
+
+    class 148081 "constraints::explicit::RelativePose"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 149745 // <generalisation>
+	relation 148849 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 149745 // <generalisation>
+	  b parent class_ref 128369 // constraints::Explicit
+      end
+
+      classrelation 156401 // <generalisation>
+	relation 155505 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 156401 // <generalisation>
+	  b parent class_ref 154609 // constraints::implicit::RelativePose
+      end
+
+      classrelation 157169 // <composition>
+	relation_ref 156017 // <composition>
+      end
+    end
+
+    class 154609 "constraints::implicit::RelativePose"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 156273 // <generalisation>
+	relation 155377 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 156273 // <generalisation>
+	  b parent class_ref 128241 // constraints::Implicit
+      end
+
+      classrelation 156913 // <composition>
+	relation_ref 155889 // <composition>
+      end
+    end
+
+    class 154737 "constraints::DifferentiableFunction"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 154865 "constraints::implicit::function::RelativePose"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 156529 // <generalisation>
+	relation 155633 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 156529 // <generalisation>
+	  b parent class_ref 154737 // constraints::DifferentiableFunction
+      end
+
+      classrelation 156785 // <composition>
+	relation 155889 *---
+	  a role_name "" private
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 156785 // <composition>
+	  b role_name "" private
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 156913 // <composition>
+      end
+    end
+
+    class 154993 "constraints::explicit_::function::RelativePose"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 156657 // <generalisation>
+	relation 155761 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 156657 // <generalisation>
+	  b parent class_ref 154737 // constraints::DifferentiableFunction
+      end
+
+      classrelation 157041 // <composition>
+	relation 156017 *---
+	  a role_name "" private
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 157041 // <composition>
+	  b role_name "" private
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 157169 // <composition>
       end
     end
   end
