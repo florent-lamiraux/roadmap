@@ -37,7 +37,7 @@ and the implicit constraint
 \begin {eqnarray}\label{eq:error-se3}
 h (\conf) = \pseudolog (T_{2/1}) = \left(\begin {array}{c} \trans_{2/1} \\ \log R_{2/1} \end{array}\right)
 \end {eqnarray}
-This constraint has several interesting geometrical properties.
+where $T_1$ and $T_2$ are frames attached to different joints of a kinematic chain. This constraint has several interesting geometrical properties.
 
 \subsection {Pre-grasp}
 
@@ -75,20 +75,24 @@ The corresponding pre-grasp constraint is then
 
 \section {Explicit representation}
 
-When the handle is not symmetric and attached to a freeflying object, the position of the freeflying object can be expressed explicitely with respect to the robt configuration. In manipulation planning, this corresponds to an explicit constraint where some configuration variables (of the object) depend on others.
+When the handle is not symmetric and attached to a freeflying object, the position of the freeflying object can be expressed explicitely with respect to the robot configuration. In manipulation planning, this corresponds to an explicit constraint where some configuration variables (of the object) depend on others.
 \begin {eqnarray}\label{eq:explicit}
-  \conf_{out} = f (\conf_{in})
+  \conf_{out} + \mathbf{v} = f (\conf_{in})
 \end {eqnarray}
-where $\conf_{out}$ is a member of $SE(3)$ represented by a vector of
-dimension 7 (translation, unit quaternion), and $\conf_{in}$ are the configuration variables of the kinematic chain holding the gripper.
-
-More precisely, using additive notation for Lie group operations in $\reals^n$ and $SE(3)$,
+where
+\begin{itemize}
+  \item $\conf_{out}$ is a member of $SE(3)$ represented by a vector of
+    dimension 7 (translation, unit quaternion),
+  \item $\mathbf{v}$ is an offset aimed at representing the error by comparing the gripper with respect to the handle frame instead of the object pose with respect to the desired pose,
+  \item and $\conf_{in}$ are the configuration variables of the kinematic chain holding the gripper.
+\end {itemize}
+We can rewrite~(\ref{eq:explicit}) as
 \begin {eqnarray}\label{eq:explicit-se3}
-  \conf_{out} + \conf_{h} = f_{g} (\conf_{in})
+  \conf_{out} \conf_{h} = f_{g} (\conf_{in})
 \end {eqnarray}
 where
 \begin {itemize}
-\item $\conf_{h}\in SE(3)$ is the position of the handle in the object frame,
+\item $\conf_{h} = \exp \mathbf{v}\in SE(3)$ is the position of the handle in the object frame,
 \item $f_{g}$ is the mapping from the robot configuration to $SE(3)$ that maps to $\conf_{in}$ the position of the gripper in the world frame when the kinematic chain holding the gripper is in configuration $\conf_{in}$.
 \end{itemize}
 
@@ -96,15 +100,15 @@ where
 
 In the general case, explicit constraint~(\ref{eq:explicit}) can be represented implicitly as
 $$
-h (\conf) = \log (\conf_{out} - f (\conf_{in})).
+h (\conf) = (\conf_{out} + \mathbf{v}) - f (\conf_{in}) = \log (f (\conf_{in})^{-1} \conf_{out} \exp \mathbf{v})
 $$
 In the case of explicit constraint~(\ref{eq:explicit-se3}), this writes
 \begin{eqnarray}\label{eq:explicit-se3-2}
-h (\conf) = \log \left((\conf_{out} + \conf_{h}) - f_{g} (\conf_{in})\right),
+h (\conf) = \log \left(f_{g} (\conf_{in})^{-1}\conf_{out}\conf_{h})\right),
 \end{eqnarray}
 while~(\ref{eq:error-se3}) writes
 $$
-h (\conf) = \pseudolog \left((\conf_{out} + \conf_{h}) - f_{g} (\conf_{in})\right).
+h (\conf) = \pseudolog \left(f_{g} (\conf_{in})^{-1}\conf_{out}\conf_{h}\right).
 $$
 
 \paragraph {Symmetric handle} (\ref {eq:symmetric-handle}) with expression~(\ref{eq:explicit-se3-2}) of $h$ still represents the grasp constraint of a symmetric handle around $z$-axis, but unfortunately, (\ref {eq:symmetric-handle-pregrasp}) does not represent a correct pregrasp position.
@@ -114,7 +118,7 @@ $$
 \begin {tabular}{|l|c|c|}
   \hline
   &&\\
-  & $h (\conf) = \log (\conf_{out} - f (\conf_{in}))$ & $h (\conf) = \pseudolog \left((\conf_{out} + \conf_{h}) - f_{g} (\conf_{in})\right)$ \\
+  & $h (\conf) = \log \left(f_{g} (\conf_{in})^{-1}\conf_{out}\conf_{h})\right),$ & $h (\conf) = \pseudolog \left(f_{g} (\conf_{in})^{-1}\conf_{out}\conf_{h}\right)$ \\
   &&\\
   \hline
   non symmetric grasp & yes & yes \\
