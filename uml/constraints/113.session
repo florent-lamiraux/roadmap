@@ -5,6 +5,8 @@ diagrams
     1435 742 120 A4 0 0
 end
 show_stereotypes
+selected 
+package_ref 129 // constraints
 open
   class_ref 128369 // constraints::Explicit
   classdiagram_ref 128113 // constraints

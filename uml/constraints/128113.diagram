@@ -2,23 +2,23 @@ format 220
 
 classcanvas 128113 class_ref 128113 // constraints::solver::BySubstitution
   classdiagramsettings member_max_width 0 end
-  xyz 35.2764 107.119 2000
+  xyz 35.6764 107.119 2000
 end
 classcanvas 128241 class_ref 128241 // constraints::Implicit
   classdiagramsettings member_max_width 0 end
-  xyzwh 313.79 108.739 2000 167 89
+  xyzwh 437.99 11.139 2000 167 89
 end
 classcanvas 128497 class_ref 128497 // constraints::LockedJoint
   classdiagramsettings member_max_width 0 end
-  xyz 220.226 343.766 2000
+  xyz 220.026 343.366 2000
 end
 classcanvas 128625 class_ref 135025 // constraints::solver:HierarchicalIterative
   classdiagramsettings member_max_width 0 end
-  xyz 34.8 17.2674 2000
+  xyz 34.2 17.2674 2000
 end
 classcanvas 128753 class_ref 128369 // constraints::Explicit
   classdiagramsettings member_max_width 0 end
-  xyzwh 322.814 220.718 2000 175 89
+  xyzwh 322.214 220.118 2000 175 89
 end
 classcanvas 130033 class_ref 141553 // constraints::ExplicitConstraintSet
   classdiagramsettings member_max_width 0 end
@@ -26,23 +26,31 @@ classcanvas 130033 class_ref 141553 // constraints::ExplicitConstraintSet
 end
 classcanvas 130417 class_ref 148081 // constraints::explicit::RelativePose
   classdiagramsettings member_max_width 0 end
-  xyz 441.979 344.533 2000
+  xyz 441.179 344.733 2000
 end
 classcanvas 130673 class_ref 154609 // constraints::implicit::RelativePose
   classdiagramsettings member_max_width 0 end
-  xyz 511.431 243.745 2000
+  xyz 507.031 250.145 2000
 end
 classcanvas 131057 class_ref 154737 // constraints::DifferentiableFunction
   classdiagramsettings member_max_width 0 end
-  xyz 124.894 400.072 2000
+  xyz 124.094 400.872 2000
 end
-classcanvas 131185 class_ref 154865 // constraints::implicit::function::RelativePose
+classcanvas 131185 class_ref 154865 // constraints::GenericTransformation
   classdiagramsettings member_max_width 0 end
-  xyz 509.306 476.58 2000
+  xyz 515.106 410.58 2000
 end
-classcanvas 131313 class_ref 154993 // constraints::explicit_::function::RelativePose
+classcanvas 131313 class_ref 154993 // constraints::explicit_::RelativeTransformation
   classdiagramsettings member_max_width 0 end
-  xyz 131.601 477.998 2005
+  xyz 52.401 491.598 2005
+end
+classcanvas 131953 class_ref 161521 // constraints::ImplicitConstraintSet
+  classdiagramsettings member_max_width 0 end
+  xyz 596 147.2 2000
+end
+classcanvas 132337 class_ref 168049 // constraints::DifferentiableFunctionSet
+  classdiagramsettings member_max_width 0 end
+  xyz 517.6 485 2000
 end
 relationcanvas 128881 relation_ref 134641 // <generalisation>
   from ref 128113 z 2001 to ref 128625
@@ -56,11 +64,6 @@ relationcanvas 129009 relation_ref 134769 // <generalisation>
 end
 relationcanvas 129137 relation_ref 134897 // <generalisation>
   from ref 128497 z 2001 to ref 128753
-  no_role_a no_role_b
-  no_multiplicity_a no_multiplicity_b
-end
-relationcanvas 129905 relation_ref 135665 // <composition>
-  from ref 128241 z 2001 to ref 128625
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b
 end
@@ -107,6 +110,26 @@ relationcanvas 131697 relation_ref 155889 // <composition>
 end
 relationcanvas 131825 relation_ref 156017 // <composition>
   from ref 131313 z 2006 to ref 130417
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 132081 relation_ref 162545 // <composition>
+  from ref 131953 z 2001 to ref 128625
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 132209 relation_ref 162673 // <generalisation>
+  from ref 131953 z 2001 to ref 128241
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 132593 relation_ref 169201 // <generalisation>
+  from ref 132337 z 2001 to ref 131057
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 132721 relation_ref 169329 // <composition>
+  from ref 132337 z 2001 to ref 131953
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b
 end

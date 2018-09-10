@@ -1,6 +1,6 @@
 format 220
 "constraints"
-  revision 7
+  revision 10
   modified_by 113 "florent"
   cpp_root_dir "/home/florent/devel/hpp/bouml/constraints/C++/"
 
@@ -331,6 +331,10 @@ ${members}};
       classrelation 136305 // <composition>
 	relation_ref 135665 // <composition>
       end
+
+      classrelation 163825 // <composition>
+	relation_ref 162545 // <composition>
+      end
     end
 
     class 141553 "constraints::ExplicitConstraintSet"
@@ -477,7 +481,7 @@ ${inlines}
       
     end
 
-    class 154865 "constraints::implicit::function::RelativePose"
+    class 154865 "constraints::GenericTransformation"
       visibility package 
       cpp_decl "${comment}${template}class ${name}${inherit} {
 ${members}};
@@ -511,7 +515,7 @@ ${inlines}
       end
     end
 
-    class 154993 "constraints::explicit_::function::RelativePose"
+    class 154993 "constraints::explicit_::RelativeTransformation"
       visibility package 
       cpp_decl "${comment}${template}class ${name}${inherit} {
 ${members}};
@@ -542,6 +546,78 @@ ${inlines}
 	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
 "
 	    classrelation_ref 157169 // <composition>
+      end
+    end
+
+    class 161521 "constraints::ImplicitConstraintSet"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 163697 // <composition>
+	relation 162545 *---
+	  a role_name "" private
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 163697 // <composition>
+	  b role_name "" private
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 163825 // <composition>
+      end
+
+      classrelation 163953 // <generalisation>
+	relation 162673 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 163953 // <generalisation>
+	  b parent class_ref 128241 // constraints::Implicit
+      end
+
+      classrelation 170737 // <composition>
+	relation_ref 169329 // <composition>
+      end
+    end
+
+    class 168049 "constraints::DifferentiableFunctionSet"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 170481 // <generalisation>
+	relation 169201 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 170481 // <generalisation>
+	  b parent class_ref 154737 // constraints::DifferentiableFunction
+      end
+
+      classrelation 170609 // <composition>
+	relation 169329 *---
+	  a role_name "" private
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 170609 // <composition>
+	  b role_name "" private
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 170737 // <composition>
       end
     end
   end
